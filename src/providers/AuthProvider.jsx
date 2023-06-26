@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -52,18 +53,20 @@ const AuthProvider = ({ children }) => {
       photoURL: photo,
     })
   }
+  const verifyEmail = (user)=>{
+    return sendEmailVerification(user)
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser)
-      console.log('current user', currentUser)
       setLoading(false)
     })
     return () => {
       return unsubscribe()
     }
   }, [])
-
+  console.log('user', auth.currentUser)
   const authInfo = {
     user,
     loading,
@@ -74,6 +77,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
+    verifyEmail
   }
 
   return (
