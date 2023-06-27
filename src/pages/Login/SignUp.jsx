@@ -1,10 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { FcGoogle } from 'react-icons/fc'
 import { FaEye,FaEyeSlash } from "react-icons/fa";
-import { useContext, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import useUser from '../../hooks/useUser/useUser';
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload;
 
@@ -15,7 +15,10 @@ const SignUp = () => {
         verifyEmail,
         createUser,
         updateUserProfile,
+        updateUserProfile1,
+        DeleteUser
       } = useContext(AuthContext)
+      const [,refetch,] = useUser()
       const navigate = useNavigate()
       const location = useLocation()
       const from = location.state?.from?.pathname || '/'
@@ -31,6 +34,7 @@ const SignUp = () => {
         const email = event.target.email.value
         const password = event.target.password.value
         const cuetId = event.target.cuetid.value 
+        const phonenumber = event.target.phone.value 
        
         if(password.length<8){
           toast.error('Password Must be 8 Character')
@@ -50,13 +54,34 @@ const SignUp = () => {
             console.log(imageUrl)
             createUser(email, password)
               .then(result => {
-                updateUserProfile(name, imageUrl)
-                  .then((result) => {
-                    console.log('signup',result)
-                    verifyEmail(result.user)
+                const user = result.user
+                updateUserProfile(user,name,imageUrl,phonenumber)
+                  .then(() => {
+                    const userData = {email:email,cuetId:cuetId,photourl:imageUrl,phone:phonenumber,role:'user'}
+                    verifyEmail()
                     .then(()=>{
-                      toast.success('Signup successful')
-                      navigate(from, { replace: true })
+                      fetch('http://localhost:5000/user',
+                      {
+                        method: 'POST',
+                        headers:{
+                          'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userData)
+                      }
+                      )
+                      .then(res=> res.json())
+                      .then(result=>{
+                        console.log(result)
+                        if(result.message){
+                          toast.error('CUET ID Already Exist')
+                          DeleteUser()
+                        }
+                        if(result.insertedId){
+                           toast.success('Signup successful and send verification Email')
+                           refetch()
+                           navigate(from, { replace: true })
+                        }
+                      })
                     })
                   })
                   .catch(err => {
@@ -67,24 +92,45 @@ const SignUp = () => {
               })
               .catch(err => {
                 setLoading(false)
-                console.log(err.message)
                 toast.error(err.message)
               })
           })
           .catch(err => {
             setLoading(false)
-            console.log(err.message)
-            toast.error(err.message)
+            console.log((err.message.split('/')[1]).slice(0,length-2))
+            toast.error((err.message.split('/')[1]).slice(0,length-2))
           })
         }else{
           createUser(email, password)
               .then(result => {
-                updateUserProfile(name)
+                const user = result.user
+                updateUserProfile1(user,name,phonenumber)
                   .then(() => {
-                    verifyEmail(result.user)
+                    const userData = {email:email,cuetId:cuetId,phone:phonenumber,role:'user'}
+                    verifyEmail()
                     .then(()=>{
-                      toast.success('Signup successful')
-                      navigate(from, { replace: true })
+                      fetch('http://localhost:5000/user',
+                      {
+                        method: 'POST',
+                        headers:{
+                          'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userData)
+                      }
+                      )
+                      .then(res=> res.json())
+                      .then(result=>{
+                        console.log(result)
+                        if(result.message){
+                          toast.error('CUET ID Already Exist')
+                          DeleteUser()
+                        }
+                        if(result.insertedId){
+                          refetch()
+                          toast.success('Signup successful and send verification Email')
+                          navigate(from, { replace: true })
+                       }
+                      })
                     })
                   })
                   .catch(err => {
@@ -92,6 +138,11 @@ const SignUp = () => {
                     console.log(err.message)
                     toast.error(err.message)
                   })
+              })
+              .catch(err => {
+                setLoading(false)
+                console.log((err.message.split('/')[1]).slice(0,length-2))
+                toast.error((err.message.split('/')[1]).slice(0,length-2))
               })
         }
       }
@@ -158,6 +209,20 @@ const SignUp = () => {
                     id='cuetid'
                     required
                     placeholder='Enter Your CUET ID Here'
+                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                    data-temp-mail-org='0'
+                  />
+                </div>
+                <div>
+                  <label htmlFor='phone' className='block mb-2 text-sm'>
+                    Phone Number
+                  </label>
+                  <input
+                    type='text'
+                    name='phone'
+                    id='phone'
+                    required
+                    placeholder='Enter Your Phone Number Here'
                     className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                     data-temp-mail-org='0'
                   />

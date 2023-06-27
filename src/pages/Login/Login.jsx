@@ -4,12 +4,14 @@ import { FcGoogle } from 'react-icons/fc'
 import { useContext, useRef } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import { TbFidgetSpinner } from 'react-icons/tb'
+import useUser from '../../hooks/useUser/useUser'
 
 
 const Login = () => {
     const { loading, setLoading, signIn, resetPassword } =
     useContext(AuthContext)
   const navigate = useNavigate()
+  const [isUser,refetch,] = useUser()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
   const emailRef = useRef()
@@ -21,12 +23,16 @@ const Login = () => {
     signIn(email, password)
       .then(result => {
         console.log(result.user)
-        navigate(from, { replace: true })
+        refetch()
+        if(isUser){
+          toast.success('Login Successfully')
+          navigate(from, { replace: true })
+        }
       })
       .catch(err => {
         setLoading(false)
-        console.log(err.message)
-        toast.error(err.message)
+        console.log((err.message.split('/')[1]).slice(0,length-2))
+        toast.error((err.message.split('/')[1]).slice(0,length-2))
       })
   }
 

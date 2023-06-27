@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Logo from './Logo';
 import Avatar from './Avatar';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+    const {user,logOut} = useContext(AuthContext)
     const navlist = <>
-    <li className='bg-rose-200 rounded'><Link to='/login'>Login</Link></li>
-             <li className='bg-rose-200 rounded'><Link to='/dashboard'>DashBoard</Link></li>
-             <li className='bg-red-200 pt-2 pb-2 pl-4 pr-4 rounded'>Logout</li>
+    {
+        user? <>
+        <li className='bg-rose-200 rounded'><Link to='/dashboard/profile'>DashBoard</Link></li>
+        <li onClick={()=>logOut()} className='bg-red-200 pt-2 pb-2 pl-4 pr-4 rounded cursor-pointer'>Logout</li>
+        </>:<>
+        <li className='bg-rose-200 rounded'><Link to='/login'>Login</Link></li>
+        </>
+    }
     </>
     return (
         <>

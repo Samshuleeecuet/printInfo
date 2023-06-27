@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  deleteUser,
   getAuth,
   onAuthStateChanged,
   sendEmailVerification,
@@ -12,6 +13,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { app } from '../firebase/firebase.config'
+import axios from 'axios'
 
 export const AuthContext = createContext(null)
 
@@ -20,7 +22,7 @@ const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const createUser = (email, password) => {
     setLoading(true)
@@ -47,26 +49,50 @@ const AuthProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const updateUserProfile = (name, photo) => {
-    return updateProfile(auth.currentUser, {
+  const updateUserProfile = (user,name,imageUrl,phonenumber) => {
+    return updateProfile(user, {
       displayName: name,
-      photoURL: photo,
+      photoURL: imageUrl,
+      phoneNumber: phonenumber
     })
   }
-  const verifyEmail = (user)=>{
-    return sendEmailVerification(user)
+  const updateUserProfile1 = (user,name,phonenumber) => {
+    return updateProfile(user, {
+      displayName: name,
+      phoneNumber: phonenumber
+    })
+  }
+
+  const DeleteUser = ()=>{
+    return deleteUser(auth.currentUser)
+  }
+
+
+  const verifyEmail = ()=>{
+    return sendEmailVerification(auth.currentUser)
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser)
-      setLoading(false)
+      if(currentUser){
+        setLoading(true)
+        axios.post('http://localhost:5000/jwt',{email:createUser?.email})
+        .then(data=>{
+          const token = data.data.token;
+          localStorage.setItem('access-token',token)
+          setLoading(false)
+      })
+        
+  }else{
+      localStorage.removeItem('access-token')
+      }
     })
     return () => {
       return unsubscribe()
     }
   }, [])
-  console.log('user', auth.currentUser)
+  console.log('Authuser', auth.currentUser)
   const authInfo = {
     user,
     loading,
@@ -77,7 +103,9 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
-    verifyEmail
+    verifyEmail,
+    updateUserProfile1,
+    DeleteUser
   }
 
   return (
