@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Logo from './Logo';
 import Avatar from './Avatar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
@@ -9,16 +9,18 @@ const Navbar = () => {
     const navlist = <>
     {
         user? <>
-        <li className='bg-rose-200 rounded'><Link to='/dashboard/profile'>DashBoard</Link></li>
+        <li className='bg-rose-200 rounded'><NavLink to='/addprintinfo'>Add Admin Print</NavLink></li>
+        <li className='bg-rose-200 rounded'><NavLink to='/addpayment'>Add Payment</NavLink></li>
+        <li className='bg-rose-200 rounded'><NavLink to='/dashboard/profile'>DashBoard</NavLink></li>
         <li onClick={()=>logOut()} className='bg-red-200 pt-2 pb-2 pl-4 pr-4 rounded cursor-pointer'>Logout</li>
         </>:<>
-        <li className='bg-rose-200 rounded'><Link to='/login'>Login</Link></li>
+        <li className='bg-rose-200 rounded'><NavLink to='/login'>Login</NavLink></li>
         </>
     }
     </>
     return (
         <>
-            <div className="navbar bg-rose-500 pr-10 pl-10">
+        <div className="navbar bg-rose-500 pr-10 pl-10">
         <div className="navbar-start">
             <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

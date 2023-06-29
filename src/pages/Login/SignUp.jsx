@@ -57,7 +57,7 @@ const SignUp = () => {
                 const user = result.user
                 updateUserProfile(user,name,imageUrl,phonenumber)
                   .then(() => {
-                    const userData = {email:email,cuetId:cuetId,photourl:imageUrl,phone:phonenumber,role:'user'}
+                    const userData = {name:name,email:email,cuetId:cuetId,photourl:imageUrl,phone:phonenumber,role:'user'}
                     verifyEmail()
                     .then(()=>{
                       fetch('http://localhost:5000/user',

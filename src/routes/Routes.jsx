@@ -5,6 +5,11 @@ import Login from '../pages/Login/Login'
 import SignUp from '../pages/Login/SignUp'
 import DashBoardLayout from '../layouts/DashBoardLayout'
 import Profile from '../pages/Dashboard/Profile/Profile'
+import AddPrintInfo from '../pages/AddPrintInfo/AddPrintInfo'
+import AllPrints from '../pages/Dashboard/AllPrints/AllPrints'
+import AllPayment from '../pages/Dashboard/AllPayment/AllPayment'
+import Userprint from '../pages/Dashboard/User/UserPrint/Userprint'
+import AddPayment from '../pages/AddPayment/AddPayment'
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +27,14 @@ export const router = createBrowserRouter([
       {
         path: '/signup',
         element:<SignUp/>
+      },
+      {
+        path:'/addprintinfo',
+        element: <AddPrintInfo/>
+      },
+      {
+        path: '/addpayment',
+        element: <AddPayment/>
       }
     ]
   },
@@ -32,6 +45,18 @@ export const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile/>
+      },
+      {
+        path: 'allprintinginfo',
+        element: <AllPrints/>
+      },
+      {
+        path: 'allpaymentinfo',
+        element: <AllPayment/>
+      },
+      {
+        path: 'userprintinfo',
+        element: <Userprint/>
       }
     ]
   }
