@@ -10,6 +10,10 @@ import AllPrints from '../pages/Dashboard/AllPrints/AllPrints'
 import AllPayment from '../pages/Dashboard/AllPayment/AllPayment'
 import Userprint from '../pages/Dashboard/User/UserPrint/Userprint'
 import AddPayment from '../pages/AddPayment/AddPayment'
+import UserPayment from '../pages/Dashboard/User/UserPayment/UserPayment'
+import PrivateRoute from './PrivateRoute'
+import AllPaymentDetails from '../pages/Dashboard/AllPaymentDetails/AllPaymentDetails'
+import Users from '../pages/Dashboard/ManageUser/Users'
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +44,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <DashBoardLayout/>,
+    element: <PrivateRoute><DashBoardLayout/></PrivateRoute>,
     children:[
       {
         path: 'profile',
@@ -57,6 +61,18 @@ export const router = createBrowserRouter([
       {
         path: 'userprintinfo',
         element: <Userprint/>
+      },
+      {
+        path: 'userpaymentinfo',
+        element: <UserPayment/>
+      },
+      {
+        path: 'paymenthistory',
+        element: <AllPaymentDetails/>
+      },
+      {
+        path:'allusers',
+        element: <Users/>
       }
     ]
   }

@@ -106,7 +106,7 @@ const SignUp = () => {
                 const user = result.user
                 updateUserProfile1(user,name,phonenumber)
                   .then(() => {
-                    const userData = {email:email,cuetId:cuetId,phone:phonenumber,role:'user'}
+                    const userData = {name:name,email:email,cuetId:cuetId,phone:phonenumber,role:'user'}
                     verifyEmail()
                     .then(()=>{
                       fetch('http://localhost:5000/user',

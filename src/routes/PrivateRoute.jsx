@@ -1,16 +1,25 @@
 import { useContext } from 'react'
 import { AuthContext } from '../providers/AuthProvider'
 import { Navigate, useLocation } from 'react-router'
+import { InfinitySpin } from 'react-loader-spinner'
+import useUser from '../hooks/useUser/useUser'
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext)
+  const [isUser,refetch,isUserLoading] = useUser()
   const location = useLocation()
-
-  if (loading) {
-    return <p>Loading.....</p>
+  if (isUserLoading) {
+    return <>
+    <div className=''>
+    <InfinitySpin 
+width='500'
+color="#4fa94d"
+height='500'
+/>
+</div>
+</>
   }
 
-  if (user) {
+  if (isUser) {
     return children
   }
   return <Navigate to='/login' state={{ from: location }} replace></Navigate>

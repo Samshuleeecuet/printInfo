@@ -18,14 +18,14 @@ const Userprint = () => {
   <table className="table table-xs table-pin-rows table-pin-cols">
     <thead>
       <tr>
-        <th>Black(single)</th> 
-        <th>Black(double)</th> 
-        <th>Front Page</th> 
-        <th>Graph Print</th> 
-        <th>Image Print</th> 
-        <th>Total Discount</th> 
-        <th>Total Additional Charge</th>
-        <th>Total Amount</th> 
+        <th>Black<br/>(single)</th> 
+        <th>Black<br/>(double)</th> 
+        <th>Front<br/> Page</th> 
+        <th>Graph<br/> Print</th> 
+        <th>Image<br/> Print</th> 
+        <th>Total<br/> Discount</th> 
+        <th>Total<br/> Additional Charge</th>
+        <th>Total<br/> Amount</th> 
       </tr>
     </thead> 
     <tbody>
@@ -49,36 +49,34 @@ const Userprint = () => {
     <thead>
       <tr>
         <th>#</th> 
-        <td>CUET Id</td> 
-        <td>Black(single)</td> 
-        <td>Black(double)</td> 
-        <td>Front Page</td> 
-        <td>Graph Print</td>
-        <th>Image Print</th> 
+        <th>CUET Id</th> 
+        <th>Black<br/>(single)</th> 
+        <th>Black<br/>(double)</th> 
+        <th>Front<br/> Page</th> 
+        <th>Graph<br/> Print</th>
+        <th>Image<br/> Print</th> 
         <th>Discount</th> 
-        <th>Additional Charge</th> 
-        <th>Total Amount</th> 
+        <th>Additional<br/> Charge</th> 
+        <th>Total<br/> Amount</th> 
         <th>Date</th> 
-        <th>Status</th>
         <th>Issued By</th> 
       </tr>
     </thead> 
     <tbody>
       {
         UserPrints && UserPrints.map((print,index)=> <tr key={index}>
-            <td>{++index}</td>
-            <td>{print.cuetId}</td>
-            <td>{print.blacksingle}</td>
-            <td>{print.blackdouble}</td>
-            <td>{print.front}</td>
-            <td>{print.graph}</td>
-            <td>{print.color}</td>
-            <td>{print.discount}</td>
-            <td>{print.additional}</td>
-            <td>{print.total}</td>
-            <td>{print.date}</td>
-            <td>{print.status}</td>
-            <td>{print.issuedBy}</td>
+            <th>{++index}</th>
+            <th>{print.cuetId}</th>
+            <th>{print.blacksingle}</th>
+            <th>{print.blackdouble}</th>
+            <th>{print.front}</th>
+            <th>{print.graph}</th>
+            <th>{print.color}</th>
+            <th>{print.discount}</th>
+            <th>{print.additional}</th>
+            <th>{print.total}</th>
+            <th>{print.date}</th>
+            <th>{print.issuedBy}</th>
 
         </tr>)
       }
