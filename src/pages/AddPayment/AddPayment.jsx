@@ -22,7 +22,6 @@ const AddPayment = () => {
         const dues = parseInt(form.due.value);
         const due = dues - paid ;
         const paymentData = {name,cuetId,total,due,paid,date}
-        console.log(paymentData)
         Swal.fire({
             title: `You want to Proceed Payment!`,
             text: `Your Payment Amount is ${paid}`,
@@ -60,9 +59,7 @@ const AddPayment = () => {
     }
     const handleChange = (e)=>{
         const id = e.target.value
-        console.log(id)
         const found = AllPayment.find(payment=> payment.cuetId === id)
-        console.log(found)
         setPaymentInfo(found)
         if(id.length == 7 && !found){
             toast.error(`${id} Not Found!! To pay, At first request to pay`)
@@ -76,7 +73,7 @@ const AddPayment = () => {
     }
     return (
         <div className='p-5 font-mono'>
-        <div className='min-h-screen w-2/6 mx-auto'>
+        <div className='min-h-screen sm:w-2/6 mx-auto'>
              <h2 className='text-center text-2xl font-extrabold pb-10 '> Add New Payment Information</h2>
              <Form onSubmit={handleSubmit} className='border p-4 rounded border-red-400'>
                 <div className="form-control">

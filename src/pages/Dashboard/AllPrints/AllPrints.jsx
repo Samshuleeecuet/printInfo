@@ -13,7 +13,6 @@ const AllPrints = () => {
         const value = e.target.searchvalue.value;
         setSearchvalue(value)
       }
-      console.log(AllPrints)
       const totalAmount = AllPrints.reduce((total,item)=> total + item.total,0)
       const totalblacksingle = AllPrints.reduce((total,item)=> total + item.blacksingle,0)
       const totalblackdouble = AllPrints.reduce((total,item)=> total + item.blackdouble,0)
@@ -36,15 +35,15 @@ const AllPrints = () => {
   <div className="overflow-x-auto">
   <table className="table table-xs table-pin-rows table-pin-cols">
     <thead>
-      <tr>
-        <th>Black<br/>(single)</th> 
-        <th>Black<br/>(double)</th> 
-        <th>Front<br/> Page</th> 
-        <th>Graph<br/> Print</th> 
-        <th>Image<br/> Print</th> 
-        <th>Total<br/> Discount</th> 
-        <th>Total<br/> Additional Charge</th>
-        <th>Total<br/> Amount</th> 
+      <tr className='bg-gray-300 text-black'>
+        <td>Black<br/>(single)</td> 
+        <td>Black<br/>(double)</td> 
+        <td>Front<br/> Page</td> 
+        <td>Graph<br/> Print</td> 
+        <td>Image<br/> Print</td> 
+        <td>Total<br/> Discount</td> 
+        <td>Total<br/> Additional Charge</td>
+        <td>Total<br/> Amount</td> 
       </tr>
     </thead> 
     <tbody>
@@ -68,20 +67,20 @@ const AllPrints = () => {
             <div className="overflow-x-auto">
   <table className="table table-xs table-pin-rows table-pin-cols">
     <thead>
-      <tr>
-        <th>#</th> 
-        <th>User Name</th> 
-        <th>CUET Id</th> 
-        <th>Black<br/>(single)</th> 
-        <th>Black<br/>(double)</th> 
-        <th>Front<br/> Page</th> 
-        <th>Graph<br/> Print</th>
-        <th>Image<br/> Print</th> 
-        <th>Discount</th> 
-        <th>Additional<br/> Charge</th> 
-        <th>Total<br/> Amount</th> 
-        <th>Date</th> 
-        <th>Issued By</th> 
+      <tr className='bg-gray-300 text-black'>
+        <td>#</td> 
+        <td>User Name</td> 
+        <td>CUET Id</td> 
+        <td>Black<br/>(single)</td> 
+        <td>Black<br/>(double)</td> 
+        <td>Front<br/> Page</td> 
+        <td>Graph<br/> Print</td>
+        <td>Image<br/> Print</td> 
+        <td>Discount</td> 
+        <td>Additional<br/> Charge</td> 
+        <td>Total<br/> Amount</td> 
+        <td>Date</td> 
+        <td>Issued By</td> 
       </tr>
     </thead> 
     <tbody>

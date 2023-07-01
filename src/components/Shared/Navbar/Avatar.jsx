@@ -7,7 +7,6 @@ import useUser from '../../../hooks/useUser/useUser';
 const Avatar = () => {
     const {user} = useContext(AuthContext)
     const [isUser,refetch] = useUser();
-    console.log('Avater',isUser)
     return (
         <img src={isUser && isUser.photourl ? isUser.photourl : avatarImg} className='rounded-full' alt='profile' height='40' width='40'>
             

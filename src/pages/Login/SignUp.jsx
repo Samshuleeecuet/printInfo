@@ -51,7 +51,6 @@ const SignUp = () => {
           .then(res => res.json())
           .then(imageData => {
             const imageUrl = imageData.data.display_url
-            console.log(imageUrl)
             createUser(email, password)
               .then(result => {
                 const user = result.user
@@ -71,7 +70,6 @@ const SignUp = () => {
                       )
                       .then(res=> res.json())
                       .then(result=>{
-                        console.log(result)
                         if(result.message){
                           toast.error('CUET ID Already Exist')
                           DeleteUser()
@@ -86,7 +84,6 @@ const SignUp = () => {
                   })
                   .catch(err => {
                     setLoading(false)
-                    console.log(err.message)
                     toast.error(err.message)
                   })
               })
@@ -97,7 +94,6 @@ const SignUp = () => {
           })
           .catch(err => {
             setLoading(false)
-            console.log((err.message.split('/')[1]).slice(0,length-2))
             toast.error((err.message.split('/')[1]).slice(0,length-2))
           })
         }else{
@@ -120,7 +116,6 @@ const SignUp = () => {
                       )
                       .then(res=> res.json())
                       .then(result=>{
-                        console.log(result)
                         if(result.message){
                           toast.error('CUET ID Already Exist')
                           DeleteUser()
@@ -135,13 +130,11 @@ const SignUp = () => {
                   })
                   .catch(err => {
                     setLoading(false)
-                    console.log(err.message)
                     toast.error(err.message)
                   })
               })
               .catch(err => {
                 setLoading(false)
-                console.log((err.message.split('/')[1]).slice(0,length-2))
                 toast.error((err.message.split('/')[1]).slice(0,length-2))
               })
         }

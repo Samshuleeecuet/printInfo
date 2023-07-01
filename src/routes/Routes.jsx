@@ -14,6 +14,7 @@ import UserPayment from '../pages/Dashboard/User/UserPayment/UserPayment'
 import PrivateRoute from './PrivateRoute'
 import AllPaymentDetails from '../pages/Dashboard/AllPaymentDetails/AllPaymentDetails'
 import Users from '../pages/Dashboard/ManageUser/Users'
+import AdminRoute from './AdminRoute'
 
 export const router = createBrowserRouter([
   {
@@ -34,11 +35,11 @@ export const router = createBrowserRouter([
       },
       {
         path:'/addprintinfo',
-        element: <AddPrintInfo/>
+        element: <AdminRoute><AddPrintInfo/></AdminRoute>
       },
       {
         path: '/addpayment',
-        element: <AddPayment/>
+        element: <AdminRoute><AddPayment/></AdminRoute>
       }
     ]
   },
@@ -52,11 +53,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allprintinginfo',
-        element: <AllPrints/>
+        element: <AdminRoute><AllPrints/></AdminRoute>
       },
       {
         path: 'allpaymentinfo',
-        element: <AllPayment/>
+        element: <AdminRoute><AllPayment/></AdminRoute>
       },
       {
         path: 'userprintinfo',
@@ -68,11 +69,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'paymenthistory',
-        element: <AllPaymentDetails/>
+        element: <AdminRoute><AllPaymentDetails/></AdminRoute>
       },
       {
         path:'allusers',
-        element: <Users/>
+        element: <AdminRoute><Users/></AdminRoute>
       }
     ]
   }

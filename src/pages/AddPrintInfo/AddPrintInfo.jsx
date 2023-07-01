@@ -31,7 +31,6 @@ const AddPrintInfo = () => {
             confirmButtonText: 'Yes, Add it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                console.log(total)
                 fetch('http://localhost:5000/adminprintinfo',
                       {
                         method: 'POST',
@@ -59,7 +58,7 @@ const AddPrintInfo = () => {
     }
     return (
         <div className='p-5 font-mono'>
-        <div className='min-h-screen w-2/6 mx-auto'>
+        <div className='min-h-screen lg:w-2/6 mx-auto'>
              <h2 className='text-center text-2xl font-extrabold pb-10 '> Add New Print Information</h2>
             <form className='border-2 p-5 rounded-lg w-full' onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="name">User Name</label>
@@ -68,36 +67,36 @@ const AddPrintInfo = () => {
                <label htmlFor="cuetID">CUET ID</label>
                <input className='border rounded-lg h-12 w-full pl-4 mb-4 border-red-400' defaultValue="" type='text' id='cuetID' placeholder='CUET ID' {...register("cuetId",{required: true})} required/>
                <br/>
-               <div className='flex gap-4'>
+               <div className='flex md:gap-4 lg:gap-4'>
                <div>
                <label htmlFor="black_single">Black (Single)</label>
                <br/>
-               <input className='border rounded-lg h-12 w-32 pl-4 mb-4 border-red-400' name='black_single' defaultValue={0} type='number' placeholder='Black Print(Single)' {...register("blacksingle")} required/>
+               <input className='border rounded-lg h-12 w-20 md:w-52 lg:w-32 pl-4 mb-4 border-red-400' name='black_single' defaultValue={0} type='number' placeholder='Black Print(Single)' {...register("blacksingle")} required/>
                </div>
                <br/>
                <div>
                <label htmlFor="black_double">Black (Double)</label>
                <br/>
-               <input className='border rounded-lg h-12 w-32 pl-4 mb-4 border-red-400' name='black_double' defaultValue={0} type='number' placeholder='Black Print(Double)' {...register("blackdouble")} required/>
+               <input className='border rounded-lg h-12 w-20 md:w-52 lg:w-32 pl-4 mb-4 border-red-400' name='black_double' defaultValue={0} type='number' placeholder='Black Print(Double)' {...register("blackdouble")} required/>
                </div>
                <br/>
                <div>
                <label htmlFor="front">Front Page</label>
                <br/>
-               <input className='border rounded-lg h-12 w-32 pl-4 mb-4 border-red-400' name='front' defaultValue={0} type='number' placeholder='Front Page Print' {...register("front")} required/>
+               <input className='border rounded-lg h-12 w-20 md:w-52 lg:w-32 pl-4 mb-4 border-red-400' name='front' defaultValue={0} type='number' placeholder='Front Page Print' {...register("front")} required/>
                </div>
                </div>
                <div className='flex gap-4'>
                <div>
                <label htmlFor="graph">Graph Print</label>
                <br/>
-               <input className='border rounded-lg h-12 w-52 pl-4 mb-4 border-red-400' name='graph' defaultValue={0} type='number' placeholder='Graph Print' {...register("graph")} required/>
+               <input className='border rounded-lg h-12 w-24 md:w-52 lg:w-52 pl-4 mb-4 border-red-400' name='graph' defaultValue={0} type='number' placeholder='Graph Print' {...register("graph")} required/>
                </div>
                <br/>
                <div>
                <label htmlFor="color">Image Print</label>
                <br/>
-               <input className='border rounded-lg h-12 w-52 pl-4 mb-4 border-red-400' name='color' defaultValue={0} type='number' placeholder='Image Print' {...register("color")} required/>
+               <input className='border rounded-lg h-12 w-24 md:w-52 lg:w-52 pl-4 mb-4 border-red-400' name='color' defaultValue={0} type='number' placeholder='Image Print' {...register("color")} required/>
                </div>
                <br/>
                </div>
@@ -105,13 +104,13 @@ const AddPrintInfo = () => {
                <div>
                <label htmlFor="discount">Discount</label>
                <br/>
-               <input className='border rounded-lg h-12 w-52 pl-4 mb-4 border-red-400' name='discount' defaultValue={0} type='number' placeholder='Discount' {...register("discount")} required/>
+               <input className='border rounded-lg h-12 w-24 md:w-52 lg:w-52 pl-4 mb-4 border-red-400' name='discount' defaultValue={0} type='number' placeholder='Discount' {...register("discount")} required/>
                </div>
                <br/>
                <div>
-               <label htmlFor="addition_amount">Additional Amount</label>
+               <label htmlFor="addition_amount" className='text-xs lg:text-lg'>Additional Amount</label>
                <br/>
-               <input className='border rounded-lg h-12 w-52 pl-4 mb-4 border-red-400' name='addition_amount' defaultValue={0} type='number' placeholder=' Addition Amount' {...register("addition_amount")} required/>
+               <input className='border rounded-lg h-12 w-24 md:w-52 lg:w-52 pl-4 mb-4 border-red-400' name='addition_amount' defaultValue={0} type='number' placeholder=' Addition Amount' {...register("addition_amount")} required/>
                </div>
                <br/>
                </div>

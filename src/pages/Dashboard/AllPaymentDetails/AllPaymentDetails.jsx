@@ -5,7 +5,6 @@ import { Form } from 'react-router-dom';
 const AllPaymentDetails = () => {
     const [searchvalue,setSearchvalue] = useState('');
     const [AllPaymentDetails] = useAllPaymentDetails(searchvalue)
-    console.log(AllPaymentDetails)
     const handleChange =(e)=>{
         setSearchvalue(e.target.value)
     }
@@ -15,7 +14,7 @@ const AllPaymentDetails = () => {
         setSearchvalue(value)
       }
     return (
-        <div className='w-full p-4'>
+        <div className='w-full p-4 mt-10'>
         <div className='text-center mt-5 mb-5'>
         <Form onSubmit={handleSearch}>
         <input onChange={handleChange} type="text" name='searchvalue' placeholder="Type CUET ID to search" className="input input-bordered input-primary w-full max-w-xs" />
@@ -27,8 +26,8 @@ const AllPaymentDetails = () => {
         <div className="overflow-x-auto">
 <table className="table table-xs table-pin-rows table-pin-cols">
 <thead>
-  <tr>
-    <th>#</th> 
+  <tr className='bg-gray-300 text-black'>
+    <td>#</td> 
     <td>User Name</td>
     <td>CUET Id</td> 
     <td>Total Amount</td> 

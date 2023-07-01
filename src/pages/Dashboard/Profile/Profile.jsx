@@ -41,7 +41,7 @@ const Profile = () => {
       <Breadcrumb pageName="Profile" />
 
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div className="relative z-20 h-35 md:h-65">
+        <div className="relative z-8 h-35 md:h-65">
           <img
             src={cover}
             alt="profile cover"
@@ -49,7 +49,7 @@ const Profile = () => {
           />
         </div>
         <div className="w-full px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
-          <div className='relative bg- flex flex-col items-center z-30 rounded-full' >
+          <div className='relative bg- flex flex-col items-center z-10 rounded-full' >
             <div className="absolute -top-14 border-8 border-gray-500/0.5 rounded-full">
               <img className="rounded-full w-28 h-28" src={isUser?.photourl || AvaterImg} alt="profile" />
             </div>
@@ -65,29 +65,33 @@ const Profile = () => {
         </div>
       </div>
       <div className=''>
-          <div className='w-1/2 font-mono mx-auto'>
+          <div className='w-3/4 lg:w-1/2 font-mono mx-auto'>
           <p className='text-center font-bold text-2xl mt-5'>Amount Information</p>
-          <div className='flex p-6'>
-      <div className="mx-auto text-center mt-4.5 mb-5.5 grid max-w-94 grid-cols-1 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                {`${AllPayment[0]?.total}`}
-                </span>
-                <span className="text-sm font-bold">Total Amount</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                {`${AllPayment[0]?.paid}`}
-                </span>
-                <span className="text-sm font-bold">Total Paid Amount</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                {`${AllPayment[0]?.due}`}
-                </span>
-                <span className="text-sm font-bold">Total Due Amount</span>
-              </div>
-      </div>
+<div className="stats shadow mt-10">
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </div>
+    <div className="stat-title">Total Amount</div>
+    <div className="stat-value">{`${AllPayment[0]?.total}`}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+    </div>
+    <div className="stat-title">Total Paid Amount</div>
+    <div className="stat-value">{`${AllPayment[0]?.paid}`}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+    </div>
+    <div className="stat-title">Total Due Amount</div>
+    <div className="stat-value">{`${AllPayment[0]?.due}`}</div>
+  </div>
+</div>
+
+  <div className='md:flex lg:flex p-6 mt-10 shadow-2xl rounded-3xl'>
       <BarChart
           width={400}
           height={300}
@@ -108,43 +112,33 @@ const Profile = () => {
           </Bar>
       </BarChart>
 
-      </div>
-          </div>
-          <div className='w-2/3 font-mono mx-auto'>
+  </div>
+  </div>
+          <div className='lg:w-2/3 mt-10 font-mono mx-auto'>
           <p className='text-center font-bold text-2xl mt-5'>Page Information</p>
-          <div className='flex p-6'>
-      <div className="mx-auto text-center mt-4.5 mb-5.5 grid max-w-94 grid-cols-1 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                {totalblacksingle}
-                </span>
-                <span className="text-sm font-bold">Black (single)</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                {totalblackdouble}
-                </span>
-                <span className="text-sm font-bold">Black (double)</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                  {totalfront}
-                </span>
-                <span className="text-sm font-bold">Front Page</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                  {totalgraph}
-                </span>
-                <span className="text-sm font-bold">Graph Page</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-semibold text-black dark:text-white">
-                  {totalcolor}
-                </span>
-                <span className="text-sm font-bold">Image Page</span>
-              </div>
-      </div>
+<div className="stats shadow mt-10">
+  <div className="stat">
+    <div className="stat-title">Black (single)</div>
+    <div className="stat-value">{totalblacksingle}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Black (Double)</div>
+    <div className="stat-value">{totalblackdouble}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Front Page</div>
+    <div className="stat-value">{totalfront}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Graph Page</div>
+    <div className="stat-value">{totalgraph}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Color Page</div>
+    <div className="stat-value">{totalcolor}</div>
+  </div>
+</div>
+          <div className='lg:flex p-6 mt-10 mb-10 shadow-2xl rounded-3xl'>
       <BarChart
           width={600}
           height={300}
@@ -170,7 +164,6 @@ const Profile = () => {
           
           </Bar>
       </BarChart>
-
       </div>
           </div>
       </div>

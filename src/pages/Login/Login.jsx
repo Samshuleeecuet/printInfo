@@ -22,7 +22,6 @@ const Login = () => {
     const password = event.target.password.value
     signIn(email, password)
       .then(result => {
-        console.log(result.user)
         refetch()
         if(isUser){
           toast.success('Login Successfully')
@@ -31,7 +30,6 @@ const Login = () => {
       })
       .catch(err => {
         setLoading(false)
-        console.log((err.message.split('/')[1]).slice(0,length-2))
         toast.error((err.message.split('/')[1]).slice(0,length-2))
       })
   }
@@ -47,7 +45,6 @@ const Login = () => {
       })
       .catch(err => {
         setLoading(false)
-        console.log(err.message)
         toast.error(err.message)
       })
   }

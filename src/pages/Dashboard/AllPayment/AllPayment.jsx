@@ -64,7 +64,7 @@ const AllPayment = () => {
         })
       }
     return (
-        <div className='w-full p-4'>
+        <div className='w-full p-4 mt-10'>
             <div className='text-center mt-5 mb-5'>
             <Form onSubmit={handleSearch}>
             <input onChange={handleChange} type="text" name='searchvalue' placeholder="Type CUET ID to search" className="input input-bordered input-primary w-full max-w-xs" />
@@ -73,36 +73,32 @@ const AllPayment = () => {
           </div>
         
   <p className='text-center text-3xl font-bold mb-5'>Total Payment Information</p>
-  <div className="overflow-x-auto">
-  <table className="table table-xs table-pin-rows table-pin-cols">
-    <thead>
-      <tr>
-        <th>Total Amount</th> 
-        <th>Paid</th> 
-        <th>Due</th>
-      </tr>
-    </thead> 
-    <tbody>
-    <tr>
-        <th>{totalAmount}</th> 
-        <th>{totalPaid}</th> 
-        <th>{totalDue}</th>
-      </tr>
-    </tbody>
-  </table>
+  <div className='flex justify-center'>
+  <div className="stats shadow mt-10">
+  <div className="stat">
+    <div className="stat-title">Total Amount</div>
+    <div className="stat-value">{totalAmount}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Total Paid Amount</div>
+    <div className="stat-value">{totalPaid}</div>
+  </div>
+  <div className="stat">
+    <div className="stat-title">Total Due Amount</div>
+    <div className="stat-value">{totalDue}</div>
+  </div>
 </div>
-
-
+  </div>
 
             <p className='text-center mt-10 text-3xl font-bold mb-5'>All Payment Information</p>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mb-10">
   <table className="table table-xs table-pin-rows table-pin-cols">
     <thead>
-      <tr>
-        <th>#</th> 
-        <td>User Name</td>
+      <tr className='bg-gray-300 text-black'>
+        <td>#</td> 
+        <td>User<br/> Name</td>
         <td>CUET Id</td> 
-        <td>Total Amount</td> 
+        <td>Total<br/> Amount</td> 
         <td>Paid</td> 
         <td>Due</td> 
         <td>Date</td>
@@ -119,7 +115,7 @@ const AllPayment = () => {
             <th>{item.paid}</th>
             <th>{item.due}</th>
             <th>{item.date}</th>
-            <th onClick={()=>handleEmail(item)} className='btn btn-xs m-2 btn-warning'>Send Mail</th>
+            <th onClick={()=>handleEmail(item)} className='btn btn-xs lg:m-2 btn-warning'>Send Mail</th>
           </tr>)
         }
     </tbody> 

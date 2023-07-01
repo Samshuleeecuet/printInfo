@@ -3,7 +3,6 @@ import usePaymentHistory from '../../../../hooks/usePayment/usePaymentHistory';
 
 const UserPayment = () => {
     const [PaymentHistory,] = usePaymentHistory()
-    console.log(PaymentHistory[0])
     const totalPaid = PaymentHistory.reduce((total,item)=> total + item.paid,0)
     
     return (

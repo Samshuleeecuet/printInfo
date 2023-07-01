@@ -4,7 +4,6 @@ import AvaterImg from './../../../assets/images/placeholder.jpg';
 
 const Users = () => {
     const [AllUsers] = useManageUser()
-    console.log(AllUsers)
     return (
         <div>
             <p className='text-center font-bold text-3xl mt-10'>All User Information</p>
@@ -12,7 +11,7 @@ const Users = () => {
   <table className="table">
     {/* head */}
     <thead>
-      <tr>
+      <tr className='bg-gray-300 text-black'>
         <th>Name</th>
         <th>CUET ID</th>
         <th>Email</th>
