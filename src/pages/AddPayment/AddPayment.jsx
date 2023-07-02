@@ -73,7 +73,7 @@ const AddPayment = () => {
     }
     return (
         <div className='p-5 font-mono'>
-        <div className='min-h-screen sm:w-2/6 mx-auto'>
+        <div className='min-h-screen sm:w-2/6 md:w-5/6 lg:w-3/6 mx-auto'>
              <h2 className='text-center text-2xl font-extrabold pb-10 '> Add New Payment Information</h2>
              <Form onSubmit={handleSubmit} className='border p-4 rounded border-red-400'>
                 <div className="form-control">

@@ -1,11 +1,13 @@
 import React from 'react';
 import useManageUser from '../../../hooks/ManageUser/useManageUser';
 import AvaterImg from './../../../assets/images/placeholder.jpg';
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
 const Users = () => {
     const [AllUsers] = useManageUser()
     return (
         <div>
+          <Breadcrumb pageName={'All Users'}></Breadcrumb>
             <p className='text-center font-bold text-3xl mt-10'>All User Information</p>
             <div className="overflow-x-auto mt-10">
   <table className="table">

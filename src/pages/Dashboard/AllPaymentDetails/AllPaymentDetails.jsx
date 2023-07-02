@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useAllPaymentDetails from '../../../hooks/usePayment/useAllPaymentDetails';
 import { Form } from 'react-router-dom';
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
 const AllPaymentDetails = () => {
     const [searchvalue,setSearchvalue] = useState('');
@@ -14,7 +15,8 @@ const AllPaymentDetails = () => {
         setSearchvalue(value)
       }
     return (
-        <div className='w-full p-4 mt-10'>
+        <div className='w-full p-4 '>
+          <Breadcrumb pageName={'Payment History'}></Breadcrumb>
         <div className='text-center mt-5 mb-5'>
         <Form onSubmit={handleSearch}>
         <input onChange={handleChange} type="text" name='searchvalue' placeholder="Type CUET ID to search" className="input input-bordered input-primary w-full max-w-xs" />

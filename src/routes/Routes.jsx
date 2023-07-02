@@ -15,11 +15,13 @@ import PrivateRoute from './PrivateRoute'
 import AllPaymentDetails from '../pages/Dashboard/AllPaymentDetails/AllPaymentDetails'
 import Users from '../pages/Dashboard/ManageUser/Users'
 import AdminRoute from './AdminRoute'
+import ErrorPage from '../pages/ErrorPage/ErrorPage'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: '/',

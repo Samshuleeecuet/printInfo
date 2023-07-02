@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-router-dom';
 import usePayment from '../../../hooks/usePayment/usePayment';
 import useManageUser from '../../../hooks/ManageUser/useManageUser';
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
 
 const AllPayment = () => {
@@ -64,7 +65,8 @@ const AllPayment = () => {
         })
       }
     return (
-        <div className='w-full p-4 mt-10'>
+        <div className='w-full p-4'>
+            <Breadcrumb pageName={'Payment Info'}></Breadcrumb>
             <div className='text-center mt-5 mb-5'>
             <Form onSubmit={handleSearch}>
             <input onChange={handleChange} type="text" name='searchvalue' placeholder="Type CUET ID to search" className="input input-bordered input-primary w-full max-w-xs" />

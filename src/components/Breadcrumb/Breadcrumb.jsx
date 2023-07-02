@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Breadcrumb = ({ pageName }) => {
   return (
-    <div className="p-6 w-full flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="p-6 mt-14 lg:mt-0 w-full flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <h2 className="text-title-md2 font-semibold text-black dark:text-white">
         {pageName}
       </h2>
@@ -10,7 +10,7 @@ const Breadcrumb = ({ pageName }) => {
       <nav>
         <ol className="flex items-center gap-2">
           <li>
-            <Link to="/dashboard">Dashboard /</Link>
+            <Link to="/dashboard/profile">Dashboard /</Link>
           </li>
           <li className="text-primary">{pageName}</li>
         </ol>

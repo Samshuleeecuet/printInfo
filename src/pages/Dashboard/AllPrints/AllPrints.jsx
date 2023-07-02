@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useAllPrints from '../../../hooks/useUser/useAllPrints';
 import { Form } from 'react-router-dom';
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
 const AllPrints = () => {
     const [searchvalue,setSearchvalue] = useState('');
@@ -24,6 +25,7 @@ const AllPrints = () => {
 
     return (
         <div className='w-full p-4'>
+          <Breadcrumb pageName={'Printing Hisory'}></Breadcrumb>
             <div className='text-center mt-5 mb-5'>
             <Form onSubmit={handleSearch}>
             <input onChange={handleChange} type="text" name='searchvalue' placeholder="Type CUET ID to search" className="input input-bordered input-primary w-full max-w-xs" />
